@@ -1,0 +1,158 @@
+---
+date: 2026-05-25
+title: 🚀 LibreChat v0.8.6
+description: The v0.8.6 release of LibreChat
+version: '0.8.6'
+---
+
+## What's Changed
+
+## 🏞️ Highlights
+
+- **Agent Skills & Subagents**
+  - Agent Skills package reusable instructions, references, scripts, assets, and permissions into portable capabilities that agents can invoke automatically or on request.
+  - Subagents let agents delegate specialized work to other agents while preserving upload, user, and MCP context with recursion and graph limits.
+- **Code Execution & Artifacts**
+  - Text, source-code, DOCX, CSV, XLSX, and PPTX artifacts can render inline or in the side panel with richer previews.
+  - Nested artifact paths, Unicode filenames, file metadata encoding, and generated-code context filtering received several hardening passes.
+- **CloudFront + Storage Delivery**
+  - CloudFront file strategy support includes signed cookies, signed downloads, strict signed-access enforcement, region-aware storage keys, and cookie refresh on auth refresh.
+- **Observability & Operations**
+  - Added Prometheus metrics, backend OpenTelemetry tracing, SSE lifecycle tracing, structured logging context, explicit readiness endpoints, and graceful HTTP shutdown.
+- **MCP, Auth, and Security Hardening**
+  - Improved MCP remote proxy support, OAuth policy handling, JWT expiry fallback, optional OpenID/MCP client-secret flows, SSRF checks, streamable HTTP limits, and admin-panel SSO redirects.
+- **Provider and Model Updates**
+  - Added Bedrock AWS profile and API key support, Bedrock guardrail environment resolution, Gemini 3.5 Flash support, Gemini tool combinations, and custom-endpoint stream-usage opt-in handling.
+
+For detailed changes in the release candidate, see:
+
+- [v0.8.6-rc1](/changelog/v0.8.6-rc1)
+
+---
+
+## Changes Since v0.8.6-rc1
+
+### ✨ Features
+
+- 🚧 feat: Support Guardrail Config Option `streamProcessingMode` by [@dlew](https://github.com/dlew) in [#12815](https://github.com/danny-avila/LibreChat/pull/12815)
+- 📈 feat: Add Prometheus Metrics Endpoint + AWS Credential Providers by [@danny-avila](https://github.com/danny-avila) in [#13111](https://github.com/danny-avila/LibreChat/pull/13111)
+- 🧾 feat: Add Structured Logging Context by [@danny-avila](https://github.com/danny-avila) in [#13110](https://github.com/danny-avila/LibreChat/pull/13110)
+- 🛡️ feat: Bedrock Guardrail Config Environment Variable Resolution by [@entropic489](https://github.com/entropic489) in [#11717](https://github.com/danny-avila/LibreChat/pull/11717)
+- 📡 feat: Add Backend OpenTelemetry Tracing by [@danny-avila](https://github.com/danny-avila) in [#12909](https://github.com/danny-avila/LibreChat/pull/12909)
+- 🏷️ feat: Hide Model Spec Badge Rows by [@danny-avila](https://github.com/danny-avila) in [#13124](https://github.com/danny-avila/LibreChat/pull/13124)
+- 👟 feat: Enable Eager Execution of Tool Calls by [@danny-avila](https://github.com/danny-avila) in [#13192](https://github.com/danny-avila/LibreChat/pull/13192)
+- 🍪 feat: Add Session Cookie Secure Override by [@danny-avila](https://github.com/danny-avila) in [#13189](https://github.com/danny-avila/LibreChat/pull/13189)
+- 🪂 feat: Graceful HTTP shutdown on SIGTERM/SIGINT by [@pjhampton](https://github.com/pjhampton) in [#13211](https://github.com/danny-avila/LibreChat/pull/13211)
+- 🩺 feat: Add Explicit Readiness Endpoints by [@danny-avila](https://github.com/danny-avila) in [#13212](https://github.com/danny-avila/LibreChat/pull/13212)
+- 🗂️ feat: Allow Disabling File Log Transports by [@danny-avila](https://github.com/danny-avila) in [#13215](https://github.com/danny-avila/LibreChat/pull/13215)
+- ⚡ feat: Add Gemini 3.5 Flash Support by [@danny-avila](https://github.com/danny-avila) in [#13231](https://github.com/danny-avila/LibreChat/pull/13231)
+- 🛣️ feat: Add MCP Remote Proxy Support by [@danny-avila](https://github.com/danny-avila) in [#13076](https://github.com/danny-avila/LibreChat/pull/13076)
+- ⚖️ feat: Add Operational Prometheus Metrics by [@danny-avila](https://github.com/danny-avila) in [#13265](https://github.com/danny-avila/LibreChat/pull/13265)
+- 🖲️ feat: Trace SSE Stream Lifecycle with OTel by [@upman](https://github.com/upman) in [#13266](https://github.com/danny-avila/LibreChat/pull/13266)
+- 📜 feat: Add Explicit new Skill Route from Agent Builder by [@sand116](https://github.com/sand116) in [#13119](https://github.com/danny-avila/LibreChat/pull/13119)
+- 🆔 feat: Built-in Build Metadata for Support Triage by [@danny-avila](https://github.com/danny-avila) in [#12756](https://github.com/danny-avila/LibreChat/pull/12756)
+- 🛂 feat: Add AWS Profile Support for Bedrock Credentials by [@iElsha](https://github.com/iElsha) in [#10504](https://github.com/danny-avila/LibreChat/pull/10504)
+- 🪙 feat: Add AWS Bedrock API key support by [@dustinhealy](https://github.com/dustinhealy) in [#8690](https://github.com/danny-avila/LibreChat/pull/8690)
+- 🛰️ feat: Support Gemini Tool Combinations by [@danny-avila](https://github.com/danny-avila) in [#13273](https://github.com/danny-avila/LibreChat/pull/13273)
+
+### 🐛 Fixes
+
+- 🧰 fix: Scope MCP Registry Initialization To Config Fingerprints by [@danny-avila](https://github.com/danny-avila) in [#13115](https://github.com/danny-avila/LibreChat/pull/13115)
+- 🧹 fix: Reset Redis Reorder State After Last Unsubscribe by [@sand116](https://github.com/sand116) in [#13117](https://github.com/danny-avila/LibreChat/pull/13117)
+- 🏷️ fix: Harden Helm Chart Tag Parsing by [@danny-avila](https://github.com/danny-avila) in [#13123](https://github.com/danny-avila/LibreChat/pull/13123)
+- 🛡️ fix: Sanitize Agent List Skill Scope by [@danny-avila](https://github.com/danny-avila) in [#13122](https://github.com/danny-avila/LibreChat/pull/13122)
+- 🗝️ fix: Protect Model Spec Instructions by [@danny-avila](https://github.com/danny-avila) in [#13125](https://github.com/danny-avila/LibreChat/pull/13125)
+- 🪵 fix: Restore Winston Format Factory Shape In Test Mocks by [@JorgeCosta87](https://github.com/JorgeCosta87) in [#13139](https://github.com/danny-avila/LibreChat/pull/13139)
+- 🛡️ fix: Escape People Picker Search Regex by [@danny-avila](https://github.com/danny-avila) in [#13169](https://github.com/danny-avila/LibreChat/pull/13169)
+- 🤝 fix: Honor OPENID_REUSE_TOKENS in Admin OAuth Exchange by [@jangByeongHui](https://github.com/jangByeongHui) in [#13154](https://github.com/danny-avila/LibreChat/pull/13154)
+- 🪪 fix: Resolve Group-Scoped Config Overrides by [@danny-avila](https://github.com/danny-avila) in [#13176](https://github.com/danny-avila/LibreChat/pull/13176)
+- 🧽 fix: Strip Admin OAuth Redirect Params by [@danny-avila](https://github.com/danny-avila) in [#13181](https://github.com/danny-avila/LibreChat/pull/13181)
+- 🔍 fix: Prefer LibreChat Web Search over Anthropic's when Both Selected by [@danny-avila](https://github.com/danny-avila) in [#13166](https://github.com/danny-avila/LibreChat/pull/13166)
+- 🗂️ fix: Scope Handoff Agent Context Docs by [@danny-avila](https://github.com/danny-avila) in [#13167](https://github.com/danny-avila/LibreChat/pull/13167)
+- 🪪 fix: Scope Message Conversation Access by [@danny-avila](https://github.com/danny-avila) in [#13183](https://github.com/danny-avila/LibreChat/pull/13183)
+- 🧭 fix: Reduce MCP Registry ACL Lookups by [@danny-avila](https://github.com/danny-avila) in [#13195](https://github.com/danny-avila/LibreChat/pull/13195)
+- ⛴️ fix: Stop Double-Wrapping configYamlContent in Helm ConfigMap by [@vdittgen](https://github.com/vdittgen) in [#13198](https://github.com/danny-avila/LibreChat/pull/13198)
+- 📡 fix: Handle Pre-Session 406 for Optional SSE MCP Stream by [@pnancarrow](https://github.com/pnancarrow) in [#13202](https://github.com/danny-avila/LibreChat/pull/13202)
+- 🧯 fix: Harden Data Retention Semantics by [@danny-avila](https://github.com/danny-avila) in [#13049](https://github.com/danny-avila/LibreChat/pull/13049)
+- 🪪 fix: Add Admin Panel SSO URL Config by [@danny-avila](https://github.com/danny-avila) in [#13220](https://github.com/danny-avila/LibreChat/pull/13220)
+- 🦣 fix: Response Size Limits for Streamable HTTP MCP Responses by [@danny-avila](https://github.com/danny-avila) in [#13219](https://github.com/danny-avila/LibreChat/pull/13219)
+- 🏃 fix: Improve OpenID Lookup Planning by [@danny-avila](https://github.com/danny-avila) in [#13229](https://github.com/danny-avila/LibreChat/pull/13229)
+- 🧩 fix: Support DocumentDB Prompt Group Lookup by [@danny-avila](https://github.com/danny-avila) in [#13232](https://github.com/danny-avila/LibreChat/pull/13232)
+- 📡 fix: Respect Custom Endpoint Stream Usage Opt-In by [@danny-avila](https://github.com/danny-avila) in [#13237](https://github.com/danny-avila/LibreChat/pull/13237)
+- 🍞 fix: don't show 'deleting file' toast on attached files by [@dlew](https://github.com/dlew) in [#13239](https://github.com/danny-avila/LibreChat/pull/13239)
+- 🧵 fix: Preserve Streaming Messages During Stale Refetch by [@danny-avila](https://github.com/danny-avila) in [#13247](https://github.com/danny-avila/LibreChat/pull/13247)
+- 🛡️ fix: Harden MCP OAuth Request Handling by [@danny-avila](https://github.com/danny-avila) in [#13264](https://github.com/danny-avila/LibreChat/pull/13264)
+- 🪪 fix: Consolidate MCP OAuth Policy by [@danny-avila](https://github.com/danny-avila) in [#13254](https://github.com/danny-avila/LibreChat/pull/13254)
+- 🪪 fix: Prevent MCP Server Name Collisions by [@danny-avila](https://github.com/danny-avila) in [#13256](https://github.com/danny-avila/LibreChat/pull/13256)
+- ⌛ fix: Use JWT exp claim for MCP when OAuth token omits expires_in by [@devanchohan](https://github.com/devanchohan) in [#13248](https://github.com/danny-avila/LibreChat/pull/13248)
+- 🪪 fix: Support OpenID PKCE Without Client Secret by [@eleite93](https://github.com/eleite93) in [#12364](https://github.com/danny-avila/LibreChat/pull/12364)
+- 🪪 fix: Allow Optional client_secret for MCP OAuth by [@aupuzikov](https://github.com/aupuzikov) in [#12460](https://github.com/danny-avila/LibreChat/pull/12460)
+- 🛂 fix: Detect OAuth Errors From HTTP 400 Responses by [@janluedemann-esome](https://github.com/janluedemann-esome) in [#11961](https://github.com/danny-avila/LibreChat/pull/11961)
+- 🪬 fix: Skip MCP Tools When Required Custom User Vars Are Unset by [@verifizieren](https://github.com/verifizieren) in [#13152](https://github.com/danny-avila/LibreChat/pull/13152)
+- 🪨 fix: Normalize Empty MCP Tool Descriptions to `undefined` for Bedrock Compat. by [@serhiizghama](https://github.com/serhiizghama) in [#13217](https://github.com/danny-avila/LibreChat/pull/13217)
+- 📡 fix: Tighten Streaming Message Cache Preservation by [@danny-avila](https://github.com/danny-avila) in [#13271](https://github.com/danny-avila/LibreChat/pull/13271)
+- 🧷 fix: Harden MCP Proxy SSRF Checks by [@danny-avila](https://github.com/danny-avila) in [#13274](https://github.com/danny-avila/LibreChat/pull/13274)
+- 🧱 fix: Validate Bedrock User Credentials by [@danny-avila](https://github.com/danny-avila) in [#13277](https://github.com/danny-avila/LibreChat/pull/13277)
+- 🧷 fix: Pin MCP OAuth Client Secrets by [@danny-avila](https://github.com/danny-avila) in [#13276](https://github.com/danny-avila/LibreChat/pull/13276)
+- 🏣 fix: Reject System Tenant In Auth Context by [@danny-avila](https://github.com/danny-avila) in [#13278](https://github.com/danny-avila/LibreChat/pull/13278)
+- 🧾 fix: Validate Bedrock User Credentials by [@danny-avila](https://github.com/danny-avila) in [#13279](https://github.com/danny-avila/LibreChat/pull/13279)
+- 🪟 fix: Apply Admin-Panel Config Overrides To YAML-Defined MCP Servers by [@dustinhealy](https://github.com/dustinhealy) in [#13173](https://github.com/danny-avila/LibreChat/pull/13173)
+- 🪡 fix: Prevent Hover Actions Flash While Streaming by [@danny-avila](https://github.com/danny-avila) in [#13285](https://github.com/danny-avila/LibreChat/pull/13285)
+- 🧩 fix: Add REDIS_CLUSTER_SAFE_DELETE Flag for ElastiCache Serverless CROSSSLOT Errors by [@serhiizghama](https://github.com/serhiizghama) in [#13275](https://github.com/danny-avila/LibreChat/pull/13275)
+- 🧵 fix: Prevent Message Loading Race During Streaming by [@danny-avila](https://github.com/danny-avila) in [#13295](https://github.com/danny-avila/LibreChat/pull/13295)
+- ⏭️ fix: Avoid False Resume Submission Stale Detection by [@danny-avila](https://github.com/danny-avila) in [#13297](https://github.com/danny-avila/LibreChat/pull/13297)
+
+### 🔧 Refactoring
+
+- 📸 refactor: Refresh Shared Links With Latest Snapshot by [@danny-avila](https://github.com/danny-avila) in [#13095](https://github.com/danny-avila/LibreChat/pull/13095)
+- 🗂️ refactor: Collapse Generated File Chips by [@danny-avila](https://github.com/danny-avila) in [#13116](https://github.com/danny-avila/LibreChat/pull/13116)
+- 🛟 refactor: Gracefully Skip Unavailable Web Search Rerankers by [@danny-avila](https://github.com/danny-avila) in [#13191](https://github.com/danny-avila/LibreChat/pull/13191)
+- 🗂️ refactor: Clarify Code Sandbox File Guidance by [@danny-avila](https://github.com/danny-avila) in [#13236](https://github.com/danny-avila/LibreChat/pull/13236)
+- 🧬 refactor: Derive Latest Message From Cache by [@danny-avila](https://github.com/danny-avila) in [#13294](https://github.com/danny-avila/LibreChat/pull/13294)
+- ⏱️ refactor: Optimistically Show New Chats In Sidebar by [@danny-avila](https://github.com/danny-avila) in [#13298](https://github.com/danny-avila/LibreChat/pull/13298)
+
+### 🧪 Tests
+
+- 🛟 test: Restore Playwright Smoke E2E by [@danny-avila](https://github.com/danny-avila) in [#13020](https://github.com/danny-avila/LibreChat/pull/13020)
+
+### 📦 Dependencies, Chores & CI
+
+- 🧹 chore: Type Agent MCP lean projection in ServerConfigsDB by [@gaurav0107](https://github.com/gaurav0107) in [#13171](https://github.com/danny-avila/LibreChat/pull/13171)
+- 🛡️ chore: Harden CI Supply Chain Workflows by [@danny-avila](https://github.com/danny-avila) in [#13090](https://github.com/danny-avila/LibreChat/pull/13090)
+- 🕵🏻 ci: Improve Flaky Subagents Test by [@dustinhealy](https://github.com/dustinhealy) in [#13185](https://github.com/danny-avila/LibreChat/pull/13185)
+- 📦 chore: npm audit fix, bump otel & `@librechat/agents` by [@danny-avila](https://github.com/danny-avila) in [#13186](https://github.com/danny-avila/LibreChat/pull/13186)
+- 📦 chore: Bump `@librechat/agents` to v3.1.88 by [@danny-avila](https://github.com/danny-avila) in [#13187](https://github.com/danny-avila/LibreChat/pull/13187)
+- 🧪 ci: Stabilize Virtualized Agent Grid Tests by [@danny-avila](https://github.com/danny-avila) in [#13214](https://github.com/danny-avila/LibreChat/pull/13214)
+- 🧵 chore: Raise MCP SSE Line Default by [@danny-avila](https://github.com/danny-avila) in [#13224](https://github.com/danny-avila/LibreChat/pull/13224)
+- 📦 chore: bump `@librechat/agents` to v3.1.90 and npm audit fix by [@danny-avila](https://github.com/danny-avila) in [#13242](https://github.com/danny-avila/LibreChat/pull/13242)
+- 🚦 ci: Enforce ESLint on Package Changes by [@danny-avila](https://github.com/danny-avila) in [#13280](https://github.com/danny-avila/LibreChat/pull/13280)
+- 🎨 chore: prettier --write all workspaces by [@danny-avila](https://github.com/danny-avila) in [#13281](https://github.com/danny-avila/LibreChat/pull/13281)
+- 🎨 ci: Check Prettier Formatting Drift on Package Changes by [@danny-avila](https://github.com/danny-avila) in [#13282](https://github.com/danny-avila/LibreChat/pull/13282)
+- 🪤 chore: Prevent CI Path Argument Injection by [@danny-avila](https://github.com/danny-avila) in [#13284](https://github.com/danny-avila/LibreChat/pull/13284)
+- 🌐 chore: Guard Locize Reviewer Request by [@danny-avila](https://github.com/danny-avila) in [#13286](https://github.com/danny-avila/LibreChat/pull/13286)
+- 📦 chore: bump `@librechat/agents`, `qs`, `langfuse` by [@danny-avila](https://github.com/danny-avila) in [#13299](https://github.com/danny-avila/LibreChat/pull/13299)
+
+### 🌍 Internationalization
+
+- 🌍 i18n: Update translation.json with latest translations by [@github-actions[bot]](https://github.com/apps/github-actions) in [#13107](https://github.com/danny-avila/LibreChat/pull/13107)
+- 🌍 i18n: Update translation.json with latest translations by [@github-actions[bot]](https://github.com/apps/github-actions) in [#13128](https://github.com/danny-avila/LibreChat/pull/13128)
+- 🌍 i18n: Update translation.json with latest translations by [@danny-avila](https://github.com/danny-avila) in [#13230](https://github.com/danny-avila/LibreChat/pull/13230)
+- 🌍 i18n: Update translation.json with latest translations by [@danny-avila](https://github.com/danny-avila) in [#13283](https://github.com/danny-avila/LibreChat/pull/13283)
+- 🌍 i18n: Update translation.json with latest translations by [@danny-avila](https://github.com/danny-avila) in [#13291](https://github.com/danny-avila/LibreChat/pull/13291)
+
+## New Contributors
+
+- [@entropic489](https://github.com/entropic489) made their first contribution in [#11717](https://github.com/danny-avila/LibreChat/pull/11717)
+- [@sand116](https://github.com/sand116) made their first contribution in [#13117](https://github.com/danny-avila/LibreChat/pull/13117)
+- [@JorgeCosta87](https://github.com/JorgeCosta87) made their first contribution in [#13139](https://github.com/danny-avila/LibreChat/pull/13139)
+- [@jangByeongHui](https://github.com/jangByeongHui) made their first contribution in [#13154](https://github.com/danny-avila/LibreChat/pull/13154)
+- [@pjhampton](https://github.com/pjhampton) made their first contribution in [#13211](https://github.com/danny-avila/LibreChat/pull/13211)
+- [@devanchohan](https://github.com/devanchohan) made their first contribution in [#13248](https://github.com/danny-avila/LibreChat/pull/13248)
+- [@eleite93](https://github.com/eleite93) made their first contribution in [#12364](https://github.com/danny-avila/LibreChat/pull/12364)
+- [@aupuzikov](https://github.com/aupuzikov) made their first contribution in [#12460](https://github.com/danny-avila/LibreChat/pull/12460)
+- [@janluedemann-esome](https://github.com/janluedemann-esome) made their first contribution in [#11961](https://github.com/danny-avila/LibreChat/pull/11961)
+- [@verifizieren](https://github.com/verifizieren) made their first contribution in [#13152](https://github.com/danny-avila/LibreChat/pull/13152)
+- [@serhiizghama](https://github.com/serhiizghama) made their first contribution in [#13217](https://github.com/danny-avila/LibreChat/pull/13217)
+- [@iElsha](https://github.com/iElsha) made their first contribution in [#10504](https://github.com/danny-avila/LibreChat/pull/10504)
+
+**Full Changelog**: https://github.com/danny-avila/LibreChat/compare/v0.8.6-rc1...v0.8.6
